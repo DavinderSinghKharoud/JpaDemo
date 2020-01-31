@@ -8,9 +8,16 @@ public class App
 {
     public static void main( String[] args )
     {
+    	Alien a  = new Alien();
+    	a.setAid(3);
+    	a.setAname("Davinder");
+    	a.setTech("Guru");
     	EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
     	EntityManager em = emf.createEntityManager();
-        Alien a = em.find(Alien.class, 1);
+    	
+    	em.getTransaction().begin();
+    em.persist(a);
+    em.getTransaction().commit();
         
         System.out.println( a );
     }
